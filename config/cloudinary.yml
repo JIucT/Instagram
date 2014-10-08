@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dbtx0bynr
+  api_key: '836937236417759'
+  api_secret: M4RuPc29q9hBIlvPOQ-Gm1XwAZU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dbtx0bynr
+  api_key: '836937236417759'
+  api_secret: M4RuPc29q9hBIlvPOQ-Gm1XwAZU
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dbtx0bynr
+  api_key: '836937236417759'
+  api_secret: M4RuPc29q9hBIlvPOQ-Gm1XwAZU
+  enhance_image_tag: true
+  static_image_support: false

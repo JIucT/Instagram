@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap-filestyle.min.js
 //= require jquery_ujs
 //= require_tree .

@@ -1,0 +1,49 @@
+<%= render partial: 'shared/header' %>
+<div class="width100">
+  <% unless @title_photos.nil? %>  
+    <div class="header width100">
+      <div class="user-news">
+        <div class="title-image">
+          <%= image_tag @title_photos[0].image.url(:large) %>
+        </div>
+        <div class="title-image">
+          <%= image_tag @title_photos[1].image.url(:large) %>
+        </div>
+        <div class="title-image">
+          <%= image_tag @title_photos[2].image.url(:large) %>
+        </div>        
+      </div>
+    </div>
+  <% else %>
+    <div class="header width100 height10em">
+      <div class="user-news height7em">
+      </div>
+    </div>    
+  <% end %>
+  <div class="body">
+    <div id="user-data">
+      <%= render partial: "avatar" %>      
+      <div id="user-status">
+        <h4><%= @user.firstname+" "+@user.lastname %></h4>
+        <p><%= @user.status %></p>
+      </div>
+      <nav class="navbar navbar-default" id="user-stats">
+        <ul class="nav navbar-nav width-inherit height50px">
+          <li class="navbar-text width23"><p id="photos-number"><%= @photos.count %></p><small class="help-block">photos</small></li>
+          <li class="divider-vertical"></li>
+          <li class="navbar-text width23"><%= 0 %><small class="help-block">followers</small></li>
+          <li class="divider-vertical"></li>
+          <li class="navbar-text width23"><%= 0 %><small class="help-block">following</small></li>
+        </ul>
+      </nav>      
+      <% if current_user == @user %>
+        <%= form_for @photo, remote: true, url: create_photo_path, method: :post, html: { multipart: true, id: "photo-upload-from" } do |f| %>
+          <input type="file" class="filestyle" data-input="false" id="photo_image" name="photo[image]" data-buttonText="Add Photo"
+                 data-iconName="glyphicon-camera" data-badge="false" >
+           <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %> 
+        <% end %>
+      <% end %>
+    </div>
+    <%= render partial: "shared/user_photos" %>
+  </div>
+</div>

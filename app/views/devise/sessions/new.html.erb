@@ -2,7 +2,8 @@
   <header class="window-header">
     <%= image_tag 'instagram.png', { size: "115x40", class: "align-center display-block" } %>
   </header>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal margin-top20px", role: "form" } ) do |f| %>
+  <p class="alert" id="end-of-header"><%= alert %></p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: "login-form", class: "form-horizontal margin-top20px", role: "form" } ) do |f| %>
     <div class="form-group">
       <%= f.label :email, { class: "text-align-center col-sm-4 control-label", for: "email" } %>
       <div class="col-sm-7">
@@ -29,6 +30,7 @@
       </div>
     <% end %>    
     <%= link_to "Forgot your password?", new_password_path(resource_name), class: "float-left margin-left5 vertical-align-text-middle" %>
-    <%= f.submit "Log in", class: "btn btn-default float-right margin-right9" %>
+    <%#= f.submit "Log in", class: "btn btn-default float-right margin-right9" %>
+    <button id="submit-login" type="button" class="btn btn-default float-right margin-right9">Log in</button>
   <% end %>
 </div>

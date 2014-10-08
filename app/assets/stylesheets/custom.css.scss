@@ -45,6 +45,10 @@ body {
   width: 20% !important;
 }
 
+.width23 {
+  width: 23% !important;
+}
+
 .width24 {
   width: 24% !important;
 }
@@ -133,6 +137,10 @@ body {
   width: auto !important;
 }
 
+.width-inherit {
+  width: inherit !important;
+}
+
 
 /************* HEIGHT *************/
 
@@ -153,7 +161,7 @@ body {
 }
 
 .height100pc {
-  height: 100% !important;
+  min-height: 100% !important;
 }
 
 .top0 {
@@ -164,8 +172,24 @@ body {
   height: 34px !important;
 }
 
+.height50px {
+  height: 50px !important;
+}
+
 .height70px {
   height: 70px !important;
+}
+
+.height4em {
+  height: 4em !important;
+}
+
+.height7em {
+  height: 7em !important;
+}
+
+.height10em {
+  height: 10em !important;
 }
 
 .max-height10px {
@@ -396,6 +420,11 @@ body {
   margin-right: 15px !important;
 }
 
+.remove-vertical-margins {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
 .margin-none {
   margin: 0 auto !important;
 }
@@ -517,6 +546,18 @@ body {
 
 /********* EXTRAS *************/
 
+.verticalLine {
+  width: 1px !important;
+  size: 500px !important;
+  color: black !important;
+}
+
+.navbar .divider-vertical {
+  min-height: 40px;
+  border-right: 1px solid grey;
+  margin-top: 5px; 
+}
+
 .visibility-hidden {
   visibility: hidden !important;
 }
@@ -545,4 +586,3 @@ body {
   width: 100%;
   margin: auto;
 }
-

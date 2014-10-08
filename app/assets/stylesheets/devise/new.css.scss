@@ -1,7 +1,6 @@
-
 .center-window {
-  width: 20%;
-  height: 400px;
+  width: 30em;
+  height: 250px;
 
   position: fixed;
   top:0;
@@ -15,12 +14,13 @@
   border: solid 1px #32A9DB;
 
   box-shadow: 3px 3px 2px #888888;
+  background-color: white;
 }
 
 .window-header {
   background-color: #32A9DB;
   width: 100%;
-  height: 10%;
+  height: 42px;
 
   border-radius: 4px 4px 0 0;
   border-width: 1px 1px 0;
@@ -28,4 +28,20 @@
   border-color: #32A9DB;
 
   box-shadow: 0 -1px 0 #32A9DB inset, 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+}
+
+.alert {
+  margin-bottom: 0 !important;
+  color: red !important;
+  background-color: white !important;
+  height: 53px !important;
+  text-align: center !important;
+  border-radius: 0 !important;
+  border-bottom: solid 1px #32A9DB !important;
+  font-weight: bold !important;
+  display: none;
+}
+
+#submit-login {
+  background-color: green !important;
 }

@@ -1,0 +1,14 @@
+<div class="user-photos">
+  <% if @photos.empty? %>
+    <div class="text-align-center well alert-info" role="alert">You have no uploaded photos yet.</div>
+  <% else %>
+    <% @photos.each_with_index do |photo, index| %>
+      <div class="photo-body">
+        <%= image_tag photo.image.url(:medium), class: "img-thumbnail img-rounded" %>
+      </div>
+      <% if index % 5 == 0  && index != 0%>
+        <hr>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
