@@ -80,6 +80,10 @@ html, body  {
   float: left;
   border-bottom: 1px solid black;
   background-color: #282730;
+  margin: auto;
+}
+
+#title-image-rigth {
 }
 
 #user-data {
@@ -115,17 +119,23 @@ html, body  {
   z-index: 2;  
   width: 162px;
   float: left;
+  height: 200px;
 }
 
 #avatar-image {
   border: solid 1px grey;
 }
 
-#edit-profile {
+.avatar-button {
   background-color: #335CA3 !important;
   margin-top: 3px;
   display: block;
-  color: white;
+  color: white !important;
+  width: 100%;
+}
+
+#av-btn-following {
+  background-color: #D1CD54 !important;
 }
 
 #user-stats {

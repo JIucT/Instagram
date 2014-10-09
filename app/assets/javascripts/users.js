@@ -33,10 +33,35 @@ $(document).ready( function() {
     })
       .done( function(data) {
         $(".user-photos").replaceWith(data);
-        $("#photos-number").text(Number($("#photos-number").text())+1 )
+        $("#photos-number").text(parseInt($("#photos-number").text())+1 )
       })
     handler.preventDefault();
   });
 
+  bindButtons();
 
 })
+
+function bindButtons() {
+  $("#av-btn-follow").click( function() {
+    $.post("/users/addfollower/"+parseInt(window.user.id), {
+      id: parseInt(window.user.id)
+    })
+    .done( function(data) {
+      $("#av-btn-follow").replaceWith(data);  
+      bindButtons();    
+    })    
+  })
+
+  $("#av-btn-following").click( function() {
+    $.ajax({
+      url: "/users/unfollow/"+parseInt(window.user.id),
+      type: 'DELETE',
+      data: { id: parseInt(window.user.id) }
+    })
+    .done( function(data) {
+      $("#av-btn-following").replaceWith(data);
+      bindButtons(); 
+    })    
+  })
+}

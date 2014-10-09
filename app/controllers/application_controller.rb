@@ -3,13 +3,24 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def stored_location_for(resource)
-    nil
-  end
+  after_filter :store_location
+
+  def store_location
+    # store last url - this is needed for post-login redirect to whatever the user last visited.
+    if (request.fullpath != "/users/sign_in" &&
+        request.fullpath != "/users/sign_up" &&
+        request.fullpath != "/users/password" &&
+        request.fullpath != "/users/sign_out" &&
+        !request.xhr?) # don't store ajax calls
+
+      session[:previous_url] = new_purchase_path(params["product"]) if params["product"]   
+   end
+ end
 
   def after_sign_in_path_for(resource)
-    root_path
+    session[:previous_url] || root_path
   end
+
 
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path

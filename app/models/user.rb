@@ -5,6 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :photos, dependent: :destroy
+  # has_and_belongs_to_many :follower, 
+  #             class: User, 
+  #             join_table: :users_relations, 
+  #             foreign_key: :user_id, 
+  #             association_foreign_key: :follower_user_id
+
+  has_many :users_relation, class: UsersRelation, foreign_key: :user_id
+  has_many :followers, class: User, through: :users_relation, foreign_key: :follower_user_id
 
   validates :email, presence: true, uniqueness: true
   validates :firstname, presence: true

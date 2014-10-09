@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007182448) do
+ActiveRecord::Schema.define(version: 20141009140652) do
 
   create_table "photos", force: true do |t|
     t.string   "name",               null: false
@@ -48,5 +48,13 @@ ActiveRecord::Schema.define(version: 20141007182448) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_relations", force: true do |t|
+    t.integer "follower_user_id", null: false
+    t.integer "user_id",          null: false
+  end
+
+  add_index "users_relations", ["follower_user_id", "user_id"], name: "index_users_relations_on_follower_user_id_and_user_id", unique: true
+  add_index "users_relations", ["user_id", "follower_user_id"], name: "index_users_relations_on_user_id_and_follower_user_id", unique: true
 
 end

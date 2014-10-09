@@ -1,6 +1,11 @@
 <div class="user-photos">
   <% if @photos.empty? %>
-    <div class="text-align-center well alert-info" role="alert">You have no uploaded photos yet.</div>
+    <% if !@user.nil? && @user.id == current_user.id %>
+      <% personality = "You have" %>
+    <% elsif !@user.nil? && @user.id != current_user.id %>
+      <% personality = @user.firstname + " has" %>
+    <% end %>
+      <div class="text-align-center well alert-info" role="alert"><%= personality %> no uploaded photos yet.</div>
   <% else %>
     <% @photos.each_with_index do |photo, index| %>
       <div class="photo-body">

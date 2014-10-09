@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   root 'users#index'
 
   post 'photos/create' => 'photos#create', as: :create_photo
-  # get 'photos/create' => 'photos#create'
+  post 'users/addfollower/:id' => 'users#add_follower', as: :add_follower
+  delete 'users/unfollow/:id' => 'users#unfollow', as: :unfollow
 
 
   # Example of regular route:

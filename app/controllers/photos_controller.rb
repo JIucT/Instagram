@@ -6,10 +6,10 @@ class PhotosController < ApplicationController
     if !photo_params[:description].nil? && !photo_params[:description].empty?
       photo.description = photo_params[:description]
     end
-    unless photo.save!
+    unless photo.save
       render "shared/something_went_wrong"
     end
-    @photos = current_user.photos.limit(100)
+    @photos = current_user.photos.order("updated_at DESC").limit(100)
     render partial: "shared/user_photos"
   end
 

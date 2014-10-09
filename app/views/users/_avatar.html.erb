@@ -1,6 +1,14 @@
 <div class="avatar">
   <%= image_tag @user.avatar, { alt: @user.firstname, id: "avatar-image" } %>
-  <a href="#">
-    <button id="edit-profile" class="btn btn-default width100">Edit Profile</button>
-  </a>
+  <% if @user.id == current_user.id %>
+    <a href="#">
+      <button id="edit-profile" class="btn btn-default avatar-button">Edit Profile</button>
+    </a>
+  <% else %>
+    <% if UsersRelation.where(user_id: @user.id, follower_user_id: current_user.id).first.nil? %>
+      <%= render partial: "users/follow_btn" %>
+    <% else %>    
+      <%= render partial: "users/unfollow_btn" %>
+    <% end %>
+  <% end %>
 </div>

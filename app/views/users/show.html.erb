@@ -9,7 +9,7 @@
         <div class="title-image">
           <%= image_tag @title_photos[1].image.url(:large) %>
         </div>
-        <div class="title-image">
+        <div class="title-image" id="title-image-rigth">
           <%= image_tag @title_photos[2].image.url(:large) %>
         </div>        
       </div>
@@ -47,3 +47,9 @@
     <%= render partial: "shared/user_photos" %>
   </div>
 </div>
+
+<script type="text/javascript">
+  user = {
+    id: "<%= @user.id %>"
+  }
+</script>
