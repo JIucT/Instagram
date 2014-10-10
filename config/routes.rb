@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resources :users 
+  resources :users do
+    post 'addfollower/:id' => 'users#add_follower', as: :add_follower, on: :collection
+    delete 'unfollow/:id' => 'users#unfollow', as: :unfollow, on: :collection
+    get 'followers/:id' => 'users#followers', as: :followers, on: :collection
+  end
 
   # You can have the root of your site routed with "root"
   root 'users#index'
 
   post 'photos/create' => 'photos#create', as: :create_photo
-  post 'users/addfollower/:id' => 'users#add_follower', as: :add_follower
-  delete 'users/unfollow/:id' => 'users#unfollow', as: :unfollow
 
 
   # Example of regular route:

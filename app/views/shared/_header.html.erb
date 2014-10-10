@@ -15,6 +15,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=current_user.firstname%></a>
           <ul class="dropdown-menu" role="menu">
             <li><a <%= "href=#{user_path(current_user.id)}" %>>View Profile</a></li>
+            <li><a <%= "href=#{followers_users_path(current_user.id)}" %>>View Followers</a></li>
             <li><a href="#">Edit Profile</a></li>
             <li><%= link_to "Log Out", destroy_user_session_path, { method: :delete } %></li>            
           </ul>

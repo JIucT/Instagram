@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
   def index
     @photo_news = Photo.joins("JOIN users ON users.id = photos.user_id
-                                JOIN users_relations ur ON ur.user_id = users.id") 
-                               .where(ur: { follower_user_id: current_user.id })
-                               .order("photos.updated_at DESC").limit(100)
+                               JOIN users_relations ur ON ur.user_id = users.id") 
+                              .where(ur: { follower_user_id: current_user.id })
+                              .order("photos.updated_at DESC").limit(100)
   end
 
   def show
@@ -34,5 +34,10 @@ class UsersController < ApplicationController
       render "shared/something_went_wrong"
     end
     render partial: "users/follow_btn"
+  end
+
+  def followers
+    @followers = current_user.follower_users
+    @i_follow = User.joins(:users_relation).where(users_relations: { follower_user_id: current_user.id } )
   end
 end

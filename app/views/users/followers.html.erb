@@ -1,0 +1,13 @@
+<%= render partial: 'shared/header' %>
+<ul class="nav nav-tabs followers-tabs" role="tablist">
+  <li class="active"><a href="#followers" role="tab" data-toggle="tab">Followers</a></li>
+  <li><a href="#i-follow" role="tab" data-toggle="tab">I follow</a></li>
+</ul>
+<div class="tab-content followers-tabs">
+  <div class="tab-pane active" id="followers">
+    <%= render partial: "users_list", locals: { users: @followers, button: false } %>
+  </div>
+  <div class="tab-pane" id="i-follow">
+    <%= render partial: "users_list", locals: { users: @i_follow, button: true } %>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<% if button %>
+  <% width = "width55" %>
+<% else %>
+  <% width = "width77" %>
+<% end %>
+<% users.each do |user| %>
+  <div class="connected_user"> 
+    <a <%= "href=#{user_path(user)}" %>>
+      <%= image_tag user.avatar, { alt: user.firstname, class: "float-left" } %>
+    </a>
+    <div class="user-data <%= "#{width}" %>">
+      <p class="name"><b><%= "#{user.firstname} #{user.lastname}" %></b></p>
+      <p><small><%= "#{user.status}" %></small></p>
+      <p>Photos: <%= user.photos.count %> </p>
+    </div>
+    <% if button %>
+      <button class="btn btn-default avatar-button" <%= "value=#{user.id}" %>>Unfollow</button>
+    <% end %>
+  </div>
+  <% unless user == users.last %>
+    <hr>
+  <% end %>
+<% end %>

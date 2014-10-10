@@ -39,6 +39,15 @@ $(document).ready( function() {
   });
 
   bindButtons();
+  $(".connected_user .avatar-button").click( function () {
+    $.ajax({
+      url: "/users/unfollow/"+parseInt($(this).val()),
+      type: 'DELETE',
+    })
+    .done( function(data) {
+      $(".connected_user .avatar-button").parent().remove();
+    })    
+  })
 
 })
 
@@ -57,11 +66,13 @@ function bindButtons() {
     $.ajax({
       url: "/users/unfollow/"+parseInt(window.user.id),
       type: 'DELETE',
-      data: { id: parseInt(window.user.id) }
     })
     .done( function(data) {
       $("#av-btn-following").replaceWith(data);
       bindButtons(); 
     })    
   })
+
 }
+
+
