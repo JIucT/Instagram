@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
     @photos = @user.photos.order("updated_at DESC").limit(100)
     if @photos.count > 3
-      @title_photos = Photo.limit(3).offset(rand(Photo.count - 3)).load
+      @title_photos = @photos.sample(3y)
     end
     @photo = Photo.new
   end
@@ -32,5 +32,4 @@ class UsersController < ApplicationController
     end
     render partial: "users/follow_btn"
   end
-
 end
