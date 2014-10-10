@@ -7,15 +7,13 @@
     <% end %>
       <div class="text-align-center well alert-info" role="alert"><%= personality %> no uploaded photos yet.</div>
   <% else %>
-  <%= @user.id %>
-    <% @photos.each_with_index do |photo, index| %>
-      <div class="photo-body">
-        <%= image_tag photo.image.url(:medium), class: "img-thumbnail img-rounded" %>
-      </div>
-      <% if index % 5 == 0  && index != 0%>
-      dawd
-        <hr>
+      <% @photos.each_with_index do |photo, index| %>
+        <div class="photo-body">
+          <%= image_tag photo.image.url(:medium), class: "img-thumbnail img-rounded user-image" %>
+        </div>
+        <% if (index+1) % 5 == 0  && index != 0%>
+          <hr class="clear-both">
+        <% end %>
       <% end %>
-    <% end %>
   <% end %>
 </div>

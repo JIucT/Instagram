@@ -14,4 +14,5 @@
 //= require bootstrap-sprockets
 //= require bootstrap-filestyle.min.js
 //= require jquery_ujs
+//= require browser_timezone_rails/application.js
 //= require_tree .

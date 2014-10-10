@@ -1,0 +1,19 @@
+<%= render partial: 'shared/header' %>
+<div class="feed">
+  <% if @photo_news.empty? %>
+    <div class="text-align-center well alert-info" role="alert">You don't follow any user yet.</div>
+  <% else %>
+    <% @photo_news.each do |photo| %>
+      <div class="news-item">
+        <a <%= "href=#{user_path(photo.user)}"%>><p><%= "#{photo.user.firstname} #{photo.user.lastname}" %></p></a>
+        <div class="position-relative">
+        <%= image_tag photo.user.avatar, { alt: photo.user.firstname, id: "news-avatar-image", class: "img-rounded " } %>      
+      </div>
+        <%= image_tag photo.image.url(:large), class: "news-item-image" %>
+        <p class="news-time"><%= photo.updated_at.strftime("%d %b. %Y") %> </p>
+        <p class="news-time"><%= photo.updated_at.strftime("%H:%M") %> </p>
+      </div>
+      <hr>
+    <% end %>
+  <% end %>
+</feed>

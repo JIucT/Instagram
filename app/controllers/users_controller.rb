@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to user_url(current_user)
+    @photo_news = Photo.joins("JOIN users ON users.id = photos.user_id
+                                JOIN users_relations ur ON ur.user_id = users.id") 
+                               .where(ur: { follower_user_id: current_user.id })
+                               .order("photos.updated_at DESC").limit(100)
   end
 
   def show
@@ -13,7 +16,7 @@ class UsersController < ApplicationController
     end
     @photos = @user.photos.order("updated_at DESC").limit(100)
     if @photos.count > 3
-      @title_photos = @photos.sample(3y)
+      @title_photos = @photos.sample(3)
     end
     @photo = Photo.new
   end

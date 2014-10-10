@@ -37,6 +37,9 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    browser-timezone-rails (0.0.8)
+      jquery-rails
+      rails (>= 3.1)
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -143,6 +146,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.2.0)
+  browser-timezone-rails
   coffee-rails (~> 4.0.0)
   devise (~> 3.4.0)
   jbuilder (~> 2.0)
